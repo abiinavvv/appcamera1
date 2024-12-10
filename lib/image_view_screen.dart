@@ -6,10 +6,10 @@ class ImageViewScreen extends StatelessWidget {
   final Function(String) onDelete; // Callback for delete action
 
   const ImageViewScreen({
-    Key? key,
+    super.key,
     required this.imagePath,
     required this.onDelete,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class ImageViewScreen extends StatelessWidget {
           ),
         ),
         backgroundColor: Colors.black,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         actions: [
           IconButton(
             icon: const Icon(Icons.delete),

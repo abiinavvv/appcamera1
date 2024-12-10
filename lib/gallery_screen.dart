@@ -4,13 +4,15 @@ import 'package:path_provider/path_provider.dart';
 import 'image_view_screen.dart';
 
 class GalleryScreen extends StatefulWidget {
+  const GalleryScreen({super.key});
+
   @override
   _GalleryScreenState createState() => _GalleryScreenState();
 }
 
 class _GalleryScreenState extends State<GalleryScreen> {
   List<FileSystemEntity> _images = [];
-  List<FileSystemEntity> _selectedImages = [];
+  final List<FileSystemEntity> _selectedImages = [];
 
   @override
   void initState() {
@@ -74,7 +76,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.black,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         actions: [
           IconButton(
             icon: const Icon(Icons.delete),
@@ -91,8 +93,8 @@ class _GalleryScreenState extends State<GalleryScreen> {
         ],
       ),
       body: _images.isEmpty
-          ? Center(
-              child: const Text(
+          ? const Center(
+              child: Text(
                 "no image available",
                 style: TextStyle(fontSize: 20, color: Colors.grey),
               ),
@@ -126,10 +128,6 @@ class _GalleryScreenState extends State<GalleryScreen> {
                     );
                   },
                   child: GridTile(
-                    child: Image.file(
-                      File(_images[index].path),
-                      fit: BoxFit.cover,
-                    ),
                     footer: Checkbox(
                       value: _selectedImages.contains(_images[index]),
                       onChanged: (bool? value) {
@@ -141,6 +139,10 @@ class _GalleryScreenState extends State<GalleryScreen> {
                           }
                         });
                       },
+                    ),
+                    child: Image.file(
+                      File(_images[index].path),
+                      fit: BoxFit.cover,
                     ),
                   ),
                 );

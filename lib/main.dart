@@ -23,6 +23,8 @@ class MyApp extends StatelessWidget {
 }
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => CameraScreen()),
+                        MaterialPageRoute(builder: (context) => const CameraScreen()),
                       );
                     },
                   ),
@@ -87,7 +89,7 @@ class HomeScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => GalleryScreen()),
+                            builder: (context) => const GalleryScreen()),
                       );
                     },
                   ),

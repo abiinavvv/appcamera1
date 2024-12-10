@@ -17,7 +17,7 @@ class _CameraScreenState extends State<CameraScreen> {
   List<CameraDescription>? _cameras;
   bool _isCameraInitialized = false;
   bool _isUsingFrontCamera = false;
-  List<String> _capturedImages = []; // Store captured image paths
+  final List<String> _capturedImages = []; // Store captured image paths
 
   @override
   void initState() {
@@ -76,7 +76,7 @@ class _CameraScreenState extends State<CameraScreen> {
       await picture.saveTo(imagePath);
       _capturedImages.add(imagePath); // Store the captured image path
 
-      // Show toast to confirm picture taken
+      // to confirm picture taken
       _showToast("Picture taken");
     } catch (e) {
       _showToast("Error taking picture");
@@ -149,7 +149,7 @@ class _CameraScreenState extends State<CameraScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => GalleryScreen()),
+                            builder: (context) => const GalleryScreen()),
                       );
                     },
                     child: const Icon(Icons.photo_library, color: Colors.white),
